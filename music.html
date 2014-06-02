@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="uft-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no;" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" /> 
+<meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
+<meta content="telephone=no" name="format-detection" /> 
+<script type="text/javascript" src="jquery.min.js"></script>
+<style>
+	img {display:block;border:0;}
+	body {margin:0;padding:0;}
+	.container {width:100%;}
+	header, footer {background-color: #e9e9e9;}
+	footer {padding:15px;text-align:center;height:40px;margin-top:-7px;}
+	.logo {width: 100px;margin: 0 auto;padding:10px;}
+	.main {width: 100%;}
+	.main img {width: 100%;}
+
+	footer img {width:13%;margin:0 auto;}
+
+	/*进度条*/
+	#center{
+		padding:0;margin-top:-7px;
+	}
+	#loading{
+		width:320px;height:10px;
+	background:url(empty.png) no-repeat;
+	}
+	#loading div{
+		width:310px;height:10px;
+	background:url(all.png) no-repeat;
+	color:#fff;
+	text-align:center;
+
+	
+	}
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<div class="logo"><img src="logo.png" alt="logo" /></div>
+		</header>
+		<div class="main">
+			<img src="bg.jpg" alt="主界面" />
+		</div>
+		<div id="center">
+			<img src="point.png" class="point" alt="圆点" style="position:relative;left:0px;top:5px;"><div id="loading"><div></div></div>
+		</div>
+		<div>
+		<!--<button onclick="pauseVid()" type="button">暂停视频</button>-->
+			<audio id="myVid" autoplay="">
+			  <source src="http://www.w3school.com.cn/i/song.ogg" type="audio/ogg">
+			  <source src="http://www.w3school.com.cn/i/song.mp3" type="audio/mpeg">
+			Your browser does not support the audio element.
+			</audio>
+		</div>
+		<footer>
+			<img onclick="vid()" src="con_btn.png" id="set" alt="播放" />
+		</footer>
+	</div>
+</body>
+<script>
+    var myVid=document.getElementById("myVid");
+    function vid() {
+        if (myVid.paused) {
+        	myVid.play();
+            document.getElementById("set").src = "con_btn.png";
+        }else {
+        	myVid.pause();
+            document.getElementById("set").src = "pause.png";
+        }
+    }
+
+    //进度条
+    var progress_id = "loading";
+	function SetProgress(progress) {
+		if (progress) {
+			$("#" + progress_id + "  div").css("width", String(progress) + "%"); //控制#loading div宽度
+			var w = $("#" + progress_id + "  div").width();
+			$('.point').css('left',w);
+		}
+	}
+	var i = 0;
+	function doProgress() {
+		if (myVid.currentTime != 0) {
+			i = myVid.currentTime/myVid.duration;
+			if (i <= 1) {
+				setTimeout("doProgress()", 100);
+				SetProgress(i*100);
+			}
+		}else {
+			setTimeout("doProgress()", 100);
+		}
+	}
+	$(document).ready(function() {
+		doProgress();
+	});
+	document.getElementById("center").onclick=function(e) {
+		e = e||event;
+		var location = e.pageX/320;
+		var time = location*myVid.duration;
+		myVid.currentTime = time;
+	}
+</script>
+
+</html>
