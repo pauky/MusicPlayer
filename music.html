@@ -6,7 +6,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable" /> 
 <meta content="black" name="apple-mobile-web-app-status-bar-style" /> 
 <meta content="telephone=no" name="format-detection" /> 
-<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="http://1.pauky.sinaapp.com/jquery.min.js"></script>
 <style>
 	img {display:block;border:0;}
 	body {margin:0;padding:0;}
@@ -25,11 +25,11 @@
 	}
 	#loading{
 		width:320px;height:10px;
-	background:url(empty.png) no-repeat;
+	background:url(http://1.pauky.sinaapp.com/empty.png) no-repeat;
 	}
 	#loading div{
 		width:310px;height:10px;
-	background:url(all.png) no-repeat;
+	background:url(http://1.pauky.sinaapp.com/all.png) no-repeat;
 	color:#fff;
 	text-align:center;
 
@@ -41,13 +41,13 @@
 <body>
 	<div class="container">
 		<header>
-			<div class="logo"><img src="logo.png" alt="logo" /></div>
+			<div class="logo"><img src="http://1.pauky.sinaapp.com/logo.png" alt="logo" /></div>
 		</header>
 		<div class="main">
-			<img src="bg.jpg" alt="主界面" />
+			<img src="http://1.pauky.sinaapp.com/bg.jpg" alt="主界面" />
 		</div>
 		<div id="center">
-			<img src="point.png" class="point" alt="圆点" style="position:relative;left:0px;top:5px;"><div id="loading"><div></div></div>
+			<img src="http://1.pauky.sinaapp.com/point.png" class="point" alt="圆点" style="position:relative;left:0px;top:5px;"><div id="loading"><div></div></div>
 		</div>
 		<div>
 		<!--<button onclick="pauseVid()" type="button">暂停视频</button>-->
@@ -58,7 +58,7 @@
 			</audio>
 		</div>
 		<footer>
-			<img onclick="vid()" src="con_btn.png" id="set" alt="播放" />
+			<img onclick="vid()" src="http://1.pauky.sinaapp.com/con_btn.png" id="set" alt="播放" />
 		</footer>
 	</div>
 </body>
@@ -67,10 +67,10 @@
     function vid() {
         if (myVid.paused) {
         	myVid.play();
-            document.getElementById("set").src = "con_btn.png";
+            document.getElementById("set").src = "http://1.pauky.sinaapp.com/con_btn.png";
         }else {
         	myVid.pause();
-            document.getElementById("set").src = "pause.png";
+            document.getElementById("set").src = "http://1.pauky.sinaapp.com/pause.png";
         }
     }
 
